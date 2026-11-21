@@ -1,0 +1,8 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("health/", views.health, name="health"),
+    path("dashboard/", views.dashboard, name="dashboard"),
+    path("preferences/", views.preferences, name="preferences"),
+]
