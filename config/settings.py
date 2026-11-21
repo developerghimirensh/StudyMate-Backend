@@ -49,8 +49,11 @@ STATIC_ROOT = BASE_DIR/'staticfiles'
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ALLOWED_ORIGINS = [x.strip() for x in os.getenv('CORS_ALLOWED_ORIGINS','').split(',') if x.strip()]
-CORS_ALLOW_ALL_ORIGINS = DEBUG and not CORS_ALLOWED_ORIGINS
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^http://localhost:\d+$",
+    r"^http://127\.0\.0\.1:\d+$",
+]
+CORS_ALLOW_ALL_ORIGINS = DEBUG and not CORS_ALLOWED_ORIGIN_REGEXES
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ['study.authentication.DeviceBoundJWTAuthentication'],
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
