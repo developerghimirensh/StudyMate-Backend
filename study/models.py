@@ -78,7 +78,7 @@ class Unit(models.Model):
 
 class Topic(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE, related_name='topics')
-    title = models.CharField(max_length=240)
+    title = models.CharField(max_length=1000)
     description = models.TextField(blank=True)
     sequence = models.PositiveSmallIntegerField(default=1)
     estimated_minutes = models.PositiveSmallIntegerField(default=30)
